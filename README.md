@@ -84,8 +84,19 @@ This entry covers the partial day of Wednesday 25 November 2026
 
 `main.py` (Python 3.13, standard library only, no network) copies the
 committed `entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png`
-(falling back to `/output/entry.png`). The copy is byte-for-byte, so two
+(it prints a clear error and exits if the variable is unset). The copy is byte-for-byte, so two
 runs always produce identical output.
+
+## How to reproduce
+
+1. Clone this repo and enter it.
+2. Run the render script with an output directory set:
+
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+```
+
+3. Check the result: `out/entry.png` is the 1024x1024 front page, byte-identical to the committed `entry.png` (`sha256sum out/entry.png entry.png`).
 
 ## License
 
